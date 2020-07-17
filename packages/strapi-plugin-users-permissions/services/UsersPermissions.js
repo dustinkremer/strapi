@@ -331,12 +331,13 @@ module.exports = {
             })
           )
         ),
-        Promise.all(
-          toRemove.map(permission => {
-            const { type, controller, action, roleId: role } = permission;
-            return query.delete({ type, controller, action, role });
-          })
-        ),
+        // IDENTIC 2020-07-17: Do not remove permissions as these may have been created by different applications
+        // Promise.all(
+        //   toRemove.map(permission => {
+        //     const { type, controller, action, roleId: role } = permission;
+        //     return query.delete({ type, controller, action, role });
+        //   })
+        // ),
       ]);
     }
   },
